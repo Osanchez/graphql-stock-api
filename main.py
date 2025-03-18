@@ -69,7 +69,6 @@ async def get_db():
     )
 
 query = QueryType()
-transaction = ObjectType("Transaction")
 mutation = ObjectType("Mutation")
 
 @query.field("transactions")
@@ -133,7 +132,7 @@ async def resolve_add_transaction(_, info, user_id, stock_symbol, shares, price)
         "transaction_id": row["id"] if row else None
     }
     
-schema = make_executable_schema(type_defs, query, transaction, mutation)
+schema = make_executable_schema(type_defs, query, mutation)
 
 # Set up FastAPI and Ariadne
 app = FastAPI()
