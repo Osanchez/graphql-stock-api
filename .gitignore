@@ -1,0 +1,63 @@
+# Python Virtual Environments
+env/
+venv/
+*.venv
+.Python
+
+# Compiled Python Files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Dependency & Build
+pip-log.txt
+pip-delete-this-directory.txt
+poetry.lock
+Pipfile
+Pipfile.lock
+dist/
+build/
+*.egg-info/
+
+# Logs & Debug
+*.log
+*.sqlite3
+debug.log
+
+# Environment Variables & Secrets
+.env
+*.env
+config.json
+settings.yaml
+*.pem
+*.key
+*.crt
+*.pfx
+*.p12
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+*.pid
+
+# Git & OS Generated Files
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+*.tmp
+
+# Testing & Coverage
+htmlcov/
+.coverage
+.tox/
+.nox/
+pytest_cache/
+.jupyter/
+
+# Node.js (If using frontend tools like Vue/React)
+node_modules/
+package-lock.json
+yarn.lock

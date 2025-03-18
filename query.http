@@ -1,0 +1,92 @@
+# get all transactions
+POST http://127.0.0.1:8000/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query($limit: Int, $offset: Int) {
+  transactions(limit: $limit, offset: $offset) {
+    id
+    user_id
+    stock_symbol
+    shares
+    price
+    timestamp
+  }
+}
+
+{
+  "limit": 2, 
+  "offset": 0
+}
+
+# get transaction by id
+###
+POST http://127.0.0.1:8000/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query ($id: ID!) {
+  transaction(id: $id) {
+    id
+    user_id
+    stock_symbol
+    shares
+    price
+    timestamp
+  }
+}
+
+{
+  "id": 4
+}
+
+# get all transactions for user by user_id
+###
+POST http://127.0.0.1:8000/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query ($user_id: Int!, $limit: Int, $offset: Int) {
+  transactionsByUser(user_id: $user_id, limit: $limit, offset: $offset) {
+    id
+    user_id
+    stock_symbol
+    shares
+    price
+    timestamp
+  }
+}
+
+{
+  "user_id": 1,
+  "limit": 2,
+  "offset": 0
+}
+
+# Create a new transaction
+###
+POST http://127.0.0.1:8000/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation ($user_id: Int!, $stock_symbol: String!, $shares: Int!, $price: Float!) {
+  createTransaction(user_id: $user_id, stock_symbol: $stock_symbol, shares: $shares, price: $price) {
+    message
+    transaction_id
+  }
+}
+
+{
+  "user_id": 1,
+  "stock_symbol": "AAPL",
+  "shares": 10,
+  "price": 150.00
+}
+
+# get top 5 most traded stocks in the last 24 hours
+###
+POST http://127.0.0.1:8000/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query { topStocks { stock_symbol total_shares } }
